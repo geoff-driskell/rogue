@@ -10,6 +10,3 @@ LINKER_FLAGS = -lSDL2
 
 all:
 	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(SRC_FILES) -o $(BUILD_DIR)/$(OBJ_NAME)
-
-game:
-	$(CC) $(SRC_FILES) -o -I include -L lib -l SDL2-2.0.0
