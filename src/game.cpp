@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 SDL_Texture* playerTex;
+SDL_Rect srcRect, destRect;
 
 Game::Game()
 {}
@@ -40,7 +41,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    SDL_Surface* tmpSurface = IMG_Load("assets/Knight_single.png");
+    SDL_Surface* tmpSurface = IMG_Load("assets/knight_run.png");
     playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
     SDL_FreeSurface(tmpSurface);
 }
@@ -63,6 +64,17 @@ void Game::handleEvents()
 void Game::update()
 {
     count++;
+    Uint32 tick = SDL_GetTicks();
+    int sprite = (tick/100) % 10;
+    srcRect.x = sprite * 120;
+    srcRect.y = 0;
+    srcRect.w = 120;
+    srcRect.h = 80;
+    destRect.x = count;
+    destRect.y = 0;
+    destRect.w = 120;
+    destRect.h = 80;
+    
     std::cout << count << std::endl;
 }
 
@@ -70,7 +82,7 @@ void Game::render()
 {
     SDL_RenderClear(renderer);
     // add stuff to render
-    SDL_RenderCopy(renderer, playerTex, NULL, NULL);
+    SDL_RenderCopy(renderer, playerTex, &srcRect, &destRect);
     SDL_RenderPresent(renderer);
 }
 
