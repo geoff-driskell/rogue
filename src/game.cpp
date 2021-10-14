@@ -1,8 +1,8 @@
 #include "game.hpp"
 #include "textureManager.hpp"
+#include "GameObject.hpp"
 
-SDL_Texture* playerTex;
-SDL_Rect srcRect, destRect;
+GameObject* player;
 
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -44,7 +44,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    playerTex = TextureManager::LoadTexture("assets/knight_run.png");
+    player = new GameObject("assets/knight_run.png", 0, 0);
 }
 
 void Game::handleEvents()
@@ -64,26 +64,14 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    count++;
-    Uint32 tick = SDL_GetTicks();
-    int sprite = (tick/100) % 10;
-    srcRect.x = sprite * 120;
-    srcRect.y = 0;
-    srcRect.w = 120;
-    srcRect.h = 80;
-    destRect.x = count;
-    destRect.y = 0;
-    destRect.w = 120;
-    destRect.h = 80;
-    
-    std::cout << count << std::endl;
+    player->update();
 }
 
 void Game::render()
 {
     SDL_RenderClear(renderer);
     // add stuff to render
-    SDL_RenderCopy(Game::renderer, playerTex, &srcRect, &destRect);
+    player->render();
     SDL_RenderPresent(Game::renderer);
 }
 
