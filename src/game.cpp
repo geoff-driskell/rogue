@@ -4,6 +4,8 @@
 SDL_Texture* playerTex;
 SDL_Rect srcRect, destRect;
 
+SDL_Renderer* Game::renderer = nullptr;
+
 Game::Game()
 {}
 Game::~Game()
@@ -27,7 +29,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
             std::cout << "Window has been created." << std::endl;
         }
 
-        renderer = SDL_CreateRenderer(window, -1, 0);
+        Game::renderer = SDL_CreateRenderer(window, -1, 0);
 
         if (renderer)
         {
@@ -42,7 +44,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    playerTex = TextureManager::LoadTexture("assets/knight_run.png", renderer);
+    playerTex = TextureManager::LoadTexture("assets/knight_run.png");
 }
 
 void Game::handleEvents()
@@ -81,14 +83,14 @@ void Game::render()
 {
     SDL_RenderClear(renderer);
     // add stuff to render
-    SDL_RenderCopy(renderer, playerTex, &srcRect, &destRect);
-    SDL_RenderPresent(renderer);
+    SDL_RenderCopy(Game::renderer, playerTex, &srcRect, &destRect);
+    SDL_RenderPresent(Game::renderer);
 }
 
 void Game::clean()
 {
     SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
+    SDL_DestroyRenderer(Game::renderer);
     SDL_Quit();
     std::cout << "Game cleaned." << std::endl;
 }
