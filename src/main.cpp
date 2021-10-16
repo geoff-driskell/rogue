@@ -14,7 +14,7 @@ int main(int argc, const char * argv[])
 
     
     game = new Game();
-    game->init("GeoffGame", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+    game->init("GeoffGame", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
     while (game->running()) 
     {
@@ -39,15 +39,7 @@ int main(int argc, const char * argv[])
         if (frameDifference > 0)
         {
             SDL_Delay(frameDifference);
-            std::cout << "Game is ahead, delaying by " << frameDifference << " milliseconds." << std::endl;
-        }
-        else if (frameDifference == 0)
-        {
-            std::cout << "Game is on time, continuing..." << std::endl;
-        }
-        else
-        {
-            std::cout << "Game is behind by " << abs(frameDifference) << " milliseconds. Hopefully we catch up." << std::endl;
+            // std::cout << "Game is ahead, delaying by " << frameDifference << " milliseconds." << std::endl;
         }
     }
 
