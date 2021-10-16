@@ -5,7 +5,7 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_NAME = rogue
 INCLUDE_PATHS = -I include
 LIBRARY_PATHS = -L lib
-COMPILER_FLAGS = -std=c++17 -Wall -g -v
+COMPILER_FLAGS = -std=c++17 -Wall -g
 LINKER_FLAGS = -lSDL2 -lSDL2_image
 
 all:
