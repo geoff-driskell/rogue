@@ -13,15 +13,15 @@ void GameObject::update()
     xpos++;
     
     Uint32 tick = SDL_GetTicks();
-    int sprite = (tick/100) % 10;
-    srcRect.x = sprite * 120;
-    srcRect.y = 0;
-    srcRect.w = 120;
-    srcRect.h = 80;
+    int sprite = (tick/100) % 3;
+    srcRect.x = sprite * 32;
+    srcRect.y = 2*32;
+    srcRect.w = 32;
+    srcRect.h = 32;
     destRect.x = xpos;
     destRect.y = ypos;
-    destRect.w = 120;
-    destRect.h = 80;
+    destRect.w = 32;
+    destRect.h = 32;
 }
 
 void GameObject::render()
