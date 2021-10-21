@@ -2,8 +2,8 @@
 
 Vector2D::Vector2D()
 {
-    double x = 0.0;
-    double y = 0.0;
+    x = 0.0;
+    y = 0.0;
 }
 
 Vector2D::Vector2D(double x, double y)
