@@ -21,7 +21,7 @@ inline ComponentID getComponentTypeID()
 template <typename T> inline ComponentID getComponentTypeID() noexcept
 {
     static ComponentID typeID = getComponentTypeID();
-    return typeID();
+    return typeID;
 }
 
 constexpr std::size_t maxComponents = 32;
@@ -68,7 +68,7 @@ public:
     template <typename T, typename... TArgs>
     T& addComponent(TArgs&&... mArgs)
     {
-        T8 c(new T(std::forward<TArgs>(mArgs)...));
+        T* c(new T(std::forward<TArgs>(mArgs)...));
         c->entity = this;
         std::unique_ptr<Component> uPtr{ c };
         components.emplace_back(std::move(uPtr));
