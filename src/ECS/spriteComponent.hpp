@@ -35,9 +35,9 @@ public:
 
     void update() override
     {
-        destRect.x = state->x();
-        destRect.y = state->y();
-    }
+        destRect.x = (int)state->position.x;
+        destRect.y = (int)state->position.y;
+    }  
 
     void draw() override
     {
