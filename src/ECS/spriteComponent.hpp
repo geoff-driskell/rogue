@@ -44,8 +44,9 @@ public:
         TextureManager::Draw(texture, srcRect, destRect);
     }
 
-    void changeFrame(int frame)
+    void changeFrame(int frame, int direction)
     {
         srcRect.x = frame * srcRect.w;
+        srcRect.y = direction * srcRect.h;
     }
 };

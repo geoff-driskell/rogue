@@ -54,6 +54,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     player.addComponent<StateComponent>(100, 100);
     player.addComponent<SpriteComponent>("assets/Male/Male 01-1.png");
+    player.addComponent<KeyboardController>();
 }
 
 void Game::handleEvents()
@@ -76,10 +77,6 @@ void Game::update()
 {
     manager.refresh();
     manager.update();
-    player.getComponent<StateComponent>().position.Add(Vector2D(0,5));
-    Uint32 tick = SDL_GetTicks();
-    int sprite = (tick/100) % 3;
-    player.getComponent<SpriteComponent>().changeFrame(sprite);
 }
 
 void Game::render()
