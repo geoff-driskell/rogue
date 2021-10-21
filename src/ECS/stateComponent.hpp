@@ -1,35 +1,27 @@
+#pragma once
 #include "components.hpp"
+#include "../Vector2D.hpp"
 
-class StateComponent : public Component {
-private:
-    int xpos;
-    int ypos;
+class StateComponent : public Component 
+{
 
 public:
+    Vector2D position;
+
     StateComponent()
     {
-        xpos = 0;
-        ypos = 0;
+        position.x = 0;
+        position.y = 0;
     }
     
-    StateComponent(int x, int y)
+    StateComponent(double x, double y)
     {
-        xpos = x;
-        ypos = y;
+        position.x = x;
+        position.y = y;
     }
 
-    int x() { return xpos; }
-    int y() { return ypos; }
-
-    void init() override {}
-
-    void update() override {
-        xpos++;
-        ypos++;
-    }
-
-    void setPos(int x, int y) {
-        xpos = x;
-        ypos = y;
+    void update() override
+    {
+        
     }
 };
