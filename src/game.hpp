@@ -26,8 +26,6 @@ public:
 private:
     bool isRunning;
     SDL_Window* window;
-    
-    int count = 0;
 };
 
 
