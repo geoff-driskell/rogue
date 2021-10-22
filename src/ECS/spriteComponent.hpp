@@ -41,8 +41,8 @@ public:
 
     void update() override
     {
-        destRect.x = (int)state->position.x;
-        destRect.y = (int)state->position.y;
+        destRect.x = static_cast<int>(state->position.x);
+        destRect.y = static_cast<int>(state->position.y);
     }  
 
     void draw() override
