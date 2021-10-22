@@ -18,8 +18,7 @@ public:
 
     StateComponent()
     {
-        position.x = 0;
-        position.y = 0;
+        position.Zero();
     }
     
     StateComponent(double x, double y)
@@ -39,8 +38,7 @@ public:
 
     void init() override
     {
-        velocity.x = 0;
-        velocity.y = 0;
+        velocity.Zero();
     }
 
     void update() override
