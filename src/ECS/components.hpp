@@ -3,4 +3,5 @@
 #include "stateComponent.hpp"
 #include "spriteComponent.hpp"
 #include "KeyboardController.hpp"
+#include "ColliderComponent.hpp"
 
