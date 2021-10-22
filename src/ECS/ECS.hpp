@@ -64,7 +64,7 @@ public:
 
     template <typename T> bool hasComponent() const
     {
-        return componentBitset[getComponentTypeID<T>];
+        return componentBitset[getComponentTypeID<T>()];
     }
 
     template <typename T, typename... TArgs>
