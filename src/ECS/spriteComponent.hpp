@@ -17,6 +17,10 @@ public:
     {
         setTexture(path);
     }
+    ~SpriteComponent()
+    {
+        SDL_DestroyTexture(texture);
+    }
     
     void setTexture(const char* path)
     {
@@ -29,8 +33,10 @@ public:
         
         srcRect.x = 0;
         srcRect.y = 64;
-        srcRect.w = srcRect.h = 32;
-        destRect.w = destRect.h = 32;
+        srcRect.w = state->width;
+        srcRect.h = state->height;
+        destRect.w = state->width * state->scale;
+        destRect.h = state->height * state->scale;
     }
 
     void update() override
