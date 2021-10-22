@@ -28,6 +28,15 @@ public:
         position.y = y;
     }
 
+    StateComponent(double x, double y, int w, int h, int sc)
+    {
+        position.x = x;
+        position.y = y;
+        width = w;
+        height = h;
+        scale = sc;
+    }
+
     void init() override
     {
         velocity.x = 0;
