@@ -40,6 +40,22 @@ public:
                 state->velocity.y = 1;
                 sprite->changeFrame(frame, 0);
                 break;
+            case SDLK_UP:
+                state->velocity.y = -1;
+                sprite->changeFrame(frame, 3);
+                break;
+            case SDLK_LEFT:
+                state->velocity.x = -1;
+                sprite->changeFrame(frame, 1);
+                break;
+            case SDLK_RIGHT:
+                state->velocity.x = 1;
+                sprite->changeFrame(frame, 2);
+                break;
+            case SDLK_DOWN:
+                state->velocity.y = 1;
+                sprite->changeFrame(frame, 0);
+                break;
             default:
                 break;
             }
@@ -60,7 +76,18 @@ public:
                 break;
             case SDLK_s:
                 state->velocity.y = 0;
-            
+            case SDLK_UP:
+                state->velocity.y = 0;
+                break;
+            case SDLK_LEFT:
+                state->velocity.x = 0;
+                break;
+            case SDLK_RIGHT:
+                state->velocity.x = 0;
+                break;
+            case SDLK_DOWN:
+                state->velocity.y = 0;
+                break;
             default:
                 break;
             }
