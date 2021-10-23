@@ -24,6 +24,8 @@ public:
             entity->addComponent<StateComponent>();
         }
         state = &entity->getComponent<StateComponent>();
+
+        Game::colliders.push_back(this);
     }
 
     void update() override
