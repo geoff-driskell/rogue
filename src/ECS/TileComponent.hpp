@@ -28,13 +28,13 @@ public:
         switch (tileID)
         {
         case 0:
-            path = "assets/maps/Water1.png"
+            path = "assets/maps/Water1.png";
             break;
         case 1:
-            path = "assets/maps/Dirt1.png"
+            path = "assets/maps/Dirt1.png";
             break;
         case 2:
-            path = "assets/maps/Grass1.png"
+            path = "assets/maps/Grass1.png";
             break;
         default:
             break;
@@ -49,4 +49,4 @@ public:
         entity->addComponent<SpriteComponent>(path);
         sprite = &entity->getComponent<SpriteComponent>();
     }
-}
+};
