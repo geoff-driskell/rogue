@@ -26,6 +26,10 @@ enum groupLabels : std::size_t
     groupColliders
 };
 
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
+
 Game::Game()
 {}
 Game::~Game()
@@ -93,9 +97,6 @@ void Game::update()
     
 }
 
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
 
 void Game::render()
 {
