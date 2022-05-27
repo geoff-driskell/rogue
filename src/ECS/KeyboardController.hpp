@@ -94,6 +94,8 @@ public:
                 state->velocity.y = 0;
                 sprite->Pause("Down");
                 break;
+            case SDLK_ESCAPE:
+                Game::isRunning = false;
             default:
                 break;
             }

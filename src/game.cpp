@@ -12,6 +12,8 @@ SDL_Event Game::event;
 
 std::vector<ColliderComponent*> Game::colliders;
 
+bool Game::isRunning = false;
+
 Manager manager;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
@@ -25,6 +27,10 @@ enum groupLabels : std::size_t
     groupEnemies,
     groupColliders
 };
+
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
 
 Game::Game()
 {}
@@ -49,18 +55,18 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         }
 
-        isRunning = true;
+        Game::isRunning = true;
     }
     else
     {
-        isRunning = false;
+        Game::isRunning = false;
     }
 
     map = new Map();
 
     Map::loadMap("assets/maps/map.map", 25, 20);
 
-    player.addComponent<StateComponent>(100, 100, 2);
+    player.addComponent<StateComponent>(2);
     player.addComponent<SpriteComponent>("assets/Male/Male 01-1.png", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
@@ -86,16 +92,17 @@ void Game::update()
     manager.refresh();
     manager.update();
 
-    for (auto cc : colliders)
+    Vector2D pVel = player.getComponent<StateComponent>().velocity;
+    int pSpeed = player.getComponent<StateComponent>().speed;
+
+    for (auto tile : tiles)
     {
-        Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
+        tile->getComponent<TileComponent>().destRect.x += -(pVel.x * pSpeed);
+        tile->getComponent<TileComponent>().destRect.y += -(pVel.y * pSpeed);
     }
     
 }
 
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
 
 void Game::render()
 {

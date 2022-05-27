@@ -23,8 +23,8 @@ public:
     
     StateComponent(int sc)
     {
-        position.x = 400;
-        position.y = 320;
+        position.x = 384;
+        position.y = 304;
         scale = sc;
     }
 
@@ -44,7 +44,5 @@ public:
 
     void update() override
     {
-        position.x += velocity.x * speed;
-        position.y += velocity.y * speed;
     }
 };
