@@ -93,6 +93,11 @@ void Game::update()
     Vector2D pVel = player.getComponent<StateComponent>().velocity;
     int pSpeed = player.getComponent<StateComponent>().speed;
 
+    for (auto tile : tiles)
+    {
+        tile->getComponent<TileComponent>().destRect.x += -(pVel.x * pSpeed);
+        tile->getComponent<TileComponent>().destRect.y += -(pVel.y * pSpeed);
+    }
     
 }
 
