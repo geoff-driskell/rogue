@@ -93,10 +93,6 @@ void Game::update()
     Vector2D pVel = player.getComponent<StateComponent>().velocity;
     int pSpeed = player.getComponent<StateComponent>().speed;
 
-    for (auto cc : colliders)
-    {
-        Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
-    }
     
 }
 
