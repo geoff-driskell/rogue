@@ -68,6 +68,16 @@ public:
 
     void update() override
     {
+        if (animated)
+        {
+            Uint32 tick = SDL_GetTicks();
+            int frame = static_cast<int>(fmod((tick/speed), frames));
+            
+            srcRect.x = srcRect.w * frame;
+        }
+
+        srcRect.y = animIndex * state->height;
+        
         destRect.x = static_cast<int>(state->position.x);
         destRect.y = static_cast<int>(state->position.y);
     }  
