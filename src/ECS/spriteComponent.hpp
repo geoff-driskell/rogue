@@ -78,8 +78,8 @@ public:
 
         srcRect.y = animIndex * state->height;
         
-        destRect.x = static_cast<int>(state->position.x);
-        destRect.y = static_cast<int>(state->position.y);
+        destRect.x = static_cast<int>(state->position.x) - Game::camera.x;
+        destRect.y = static_cast<int>(state->position.y) - Game::camera.y;
     }  
 
     void draw() override
