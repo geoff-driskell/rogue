@@ -12,6 +12,8 @@ SDL_Event Game::event;
 
 std::vector<ColliderComponent*> Game::colliders;
 
+bool Game::isRunning = false;
+
 Manager manager;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
@@ -53,11 +55,11 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         }
 
-        isRunning = true;
+        Game::isRunning = true;
     }
     else
     {
-        isRunning = false;
+        Game::isRunning = false;
     }
 
     map = new Map();
