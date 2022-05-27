@@ -94,15 +94,25 @@ void Game::update()
     manager.refresh();
     manager.update();
 
-    Vector2D pVel = player.getComponent<StateComponent>().velocity;
-    int pSpeed = player.getComponent<StateComponent>().speed;
+    camera.x = player.getComponent<StateComponent>().position.x - 384;
+    camera.y = player.getComponent<StateComponent>().position.y - 304;
 
-    for (auto tile : tiles)
+    if (camera.x < 0)
     {
-        tile->getComponent<TileComponent>().destRect.x += -(pVel.x * pSpeed);
-        tile->getComponent<TileComponent>().destRect.y += -(pVel.y * pSpeed);
+        camera.x = 0;
     }
-    
+    if (camera.y < 0)
+    {
+        camera.y = 0;
+    }
+    if (camera.x > camera.w)
+    {
+        camera.x = camera.w;
+    }
+    if (camera.y > camera.h)
+    {
+        camera.y = camera.h;
+    }
 }
 
 
