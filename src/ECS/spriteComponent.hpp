@@ -59,7 +59,7 @@ public:
         state = &entity->getComponent<StateComponent>();
         
         srcRect.x = 0;
-        srcRect.y = 64;
+        srcRect.y = 0;
         srcRect.w = state->width;
         srcRect.h = state->height;
         destRect.w = state->width * state->scale;
