@@ -121,3 +121,11 @@ void Game::clean()
     SDL_Quit();
     std::cout << "Game cleaned." << std::endl;
 }
+
+void Game::AddTile(int srcX, int srcY, int xpos, int ypos)
+{
+    auto& tile(manager.addEntity());
+    tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, mapfile);
+    tile.addGroup(groupMap);
+}
+
