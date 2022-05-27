@@ -50,9 +50,17 @@ public:
         TextureManager::Draw(texture, srcRect, destRect);
     }
 
-    void changeFrame(int frame, int direction)
+    void Play(const char* animName)
     {
-        srcRect.x = frame * srcRect.w;
-        srcRect.y = direction * srcRect.h;
+        frames = animations[animName].frames;
+        animIndex = animations[animName].index;
+        speed = animations[animName].speed;
+    }
+
+    void Pause(const char* animName)
+    {
+        frames = 0;
+        animIndex = animations[animName].index;
+        speed = animations[animName].speed;
     }
 };
