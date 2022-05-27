@@ -64,16 +64,11 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     player.addComponent<SpriteComponent>("assets/Male/Male 01-1.png", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
-
-    wall.addComponent<StateComponent>(300.0, 300.0, 20, 300, 1);
-    wall.addComponent<SpriteComponent>("assets/maps/Wall-Up1.png");
-    wall.addComponent<ColliderComponent>("wall");
+    player.addGroup(groupPlayers);
 }
 
 void Game::handleEvents()
 {
-    
-
     SDL_PollEvent(&event);
     switch (event.type)
     {
@@ -97,6 +92,10 @@ void Game::update()
     }
     
 }
+
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
 
 void Game::render()
 {
