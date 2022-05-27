@@ -27,6 +27,23 @@ public:
     {
         setTexture(path);
     }
+
+    SpriteComponent(const char* path, bool isAnimated)
+    {
+        animated = isAnimated;
+        Animation charDown = Animation(0, 3, 100);
+        Animation charLeft = Animation(1, 3, 100);
+        Animation charRight = Animation(2, 3, 100);
+        Animation charUp = Animation(3, 3, 100);
+
+        animations.emplace("Down", charDown);
+        animations.emplace("Left", charLeft);
+        animations.emplace("Right", charRight);
+        animations.emplace("Up", charUp);
+
+        setTexture(path);
+    }
+
     ~SpriteComponent()
     {
         SDL_DestroyTexture(texture);
