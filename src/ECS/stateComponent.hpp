@@ -21,10 +21,11 @@ public:
         position.Zero();
     }
     
-    StateComponent(double x, double y)
+    StateComponent(int sc)
     {
-        position.x = x;
-        position.y = y;
+        position.x = 400;
+        position.y = 320;
+        scale = sc;
     }
 
     StateComponent(double x, double y, int w, int h, int sc)
