@@ -9,40 +9,29 @@ Map::Map()
 Map::~Map()
 {
 
-void Map::loadMap(int arr[20][25])
-{
-    for (int row = 0; row < 20; row++){
-        for (int column = 0; column < 25; column++)
-        {
-            map[row][column] = arr[row][column];
-        }
-    }
 }
 
-void Map::drawMap()
+void Map::loadMap(std::string path, int sizeX, int sizeY)
 {
-    int type = 0;
-    for (int row = 0; row < 20; row++){
-        for (int column = 0; column < 25; column++)
-        {
-            type = map[row][column];
-            dest.x = column * 32;
-            dest.y = row * 32;
+    char c;
+    std::fstream mapFile;
+    mapFile.open(path);
 
-            switch (type)
-            {
-            case 0:
-                TextureManager::Draw(water, src, dest);
-                break;
-            case 1:
-                TextureManager::Draw(grass, src, dest);
-                break;
-            case 2:
-                TextureManager::Draw(dirt, src, dest);
-            
-            default:
-                break;
-            }
+    int srcX, srcY;
+    
+    for (int y = 0; y < sizeY; y++)
+    {
+        for (int x = 0; x < sizeX; x++)
+        {
+            mapFile.get(c);
+            srcY = atoi(&c) * 32;
+            mapFile.get(c);
+            srcX = atoi(&c) * 32;
+            Game::AddTile(srcX, srcY, x * 64, y * 64);
+            mapFile.ignore();
         }
+        mapFile.ignore();
     }
+    
+    mapFile.close();
 }
