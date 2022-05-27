@@ -16,9 +16,15 @@ Manager manager;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
-auto& tile0(manager.addEntity());
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
+const char* mapfile = "assets/maps/terrain_ss.png";
+
+enum groupLabels : std::size_t
+{
+    groupMap,
+    groupPlayers,
+    groupEnemies,
+    groupColliders
+};
 
 Game::Game()
 {}
