@@ -1,4 +1,5 @@
-#include "game.hpp"
+#pragma once
+#include <string>
 
 class Map
 {
