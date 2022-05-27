@@ -100,9 +100,18 @@ auto& enemies(manager.getGroup(groupEnemies));
 void Game::render()
 {
     SDL_RenderClear(renderer);
-    // add stuff to render
-    //map->drawMap();
-    manager.draw();
+    for (auto& t : tiles)
+    {
+        t->draw();
+    }
+    for (auto& p : players)
+    {
+        p->draw();
+    }
+    for (auto& e : enemies)
+    {
+        e->draw();
+    }
     SDL_RenderPresent(Game::renderer);
 }
 
