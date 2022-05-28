@@ -58,6 +58,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     player.addGroup(groupPlayers);
 }
 
+auto& tiles(manager.getGroup(Game::groupMap));
+auto& players(manager.getGroup(Game::groupPlayers));
+auto& colliders(manager.getGroup(Game::groupColliders));
+
 void Game::handleEvents()
 {
     SDL_PollEvent(&event);
