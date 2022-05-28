@@ -18,21 +18,6 @@ bool Game::isRunning = false;
 
 Manager manager;
 auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
-
-const char* mapfile = "assets/maps/terrain_ss.png";
-
-enum groupLabels : std::size_t
-{
-    groupMap,
-    groupPlayers,
-    groupEnemies,
-    groupColliders
-};
-
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
 
 Game::Game()
 {}

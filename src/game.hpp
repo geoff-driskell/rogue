@@ -29,6 +29,13 @@ public:
     static bool isRunning;
     static SDL_Rect camera;
 
+    enum groupLabels : std::size_t
+    {
+        groupMap,
+        groupPlayers,
+        groupColliders
+    };
+
 private:
     SDL_Window* window;
 };
