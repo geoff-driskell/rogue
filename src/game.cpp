@@ -6,17 +6,15 @@
 #include "Collision.hpp"
 
 Map* map;
+Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
 SDL_Rect Game::camera = {0,0,800,640};
 
-std::vector<ColliderComponent*> Game::colliders;
-
 bool Game::isRunning = false;
 
-Manager manager;
 auto& player(manager.addEntity());
 
 Game::Game()
