@@ -47,9 +47,9 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         Game::isRunning = false;
     }
 
-    map = new Map();
+    map = new Map("assets/terrain_ss.png", 3, 32);
 
-    Map::loadMap("assets/maps/map.map", 25, 20);
+    map->loadMap("assets/maps/map.map", 25, 20);
 
     player.addComponent<StateComponent>(2);
     player.addComponent<SpriteComponent>("assets/Male/Male 01-1.png", true);
@@ -78,8 +78,21 @@ void Game::handleEvents()
 
 void Game::update()
 {
+
+    SDL_Rect playerCollider = player.getComponent<ColliderComponent>().collider;
+    Vector2D playerPosition = player.getComponent<StateComponent>().position;
+
     manager.refresh();
     manager.update();
+
+    for (auto& collider : colliders)
+    {
+        SDL_Rect mapCollider = collider->getComponent<ColliderComponent>().collider;
+        if (Collision::AABB(mapCollider, playerCollider))
+        {
+            player.getComponent<StateComponent>().position = playerPosition;
+        }
+    }
 
     camera.x = player.getComponent<StateComponent>().position.x - 384;
     camera.y = player.getComponent<StateComponent>().position.y - 304;
@@ -110,13 +123,13 @@ void Game::render()
     {
         t->draw();
     }
+    for (auto& c : colliders)
+    {
+        c->draw();
+    }
     for (auto& p : players)
     {
         p->draw();
-    }
-    for (auto& e : enemies)
-    {
-        e->draw();
     }
     SDL_RenderPresent(Game::renderer);
 }
