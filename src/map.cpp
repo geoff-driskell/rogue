@@ -46,7 +46,7 @@ void Map::loadMap(std::string path, int sizeX, int sizeY)
         for (int x = 0; x < sizeX; x++)
         {
             mapFile.get(c);
-            std::cout << "(" << x << "," << y << ")" << "Collider file value is: " << c << std::endl;
+            //std::cout << "(" << x << "," << y << ")" << "Collider file value is: " << c << std::endl;
             if (c == '1')
             {
                 auto& tcol(manager.addEntity());
