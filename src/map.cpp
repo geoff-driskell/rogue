@@ -9,6 +9,9 @@ extern Manager manager;
 
 Map::Map(const char* p_mapFilePath, int p_mapScale, int p_tileSize)
 {
+    m_mapFilePath = p_mapFilePath;
+    m_mapScale = p_mapScale;
+    m_tileSize = p_tileSize;
     m_scaledSize = p_mapScale * p_tileSize;
 }
 
