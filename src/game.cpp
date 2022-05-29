@@ -47,7 +47,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         Game::isRunning = false;
     }
 
-    map = new Map("assets/terrain_ss.png", 3, 32);
+    map = new Map("assets/maps/terrain_ss.png", 3, 32);
 
     map->loadMap("assets/maps/map.map", 25, 20);
 
