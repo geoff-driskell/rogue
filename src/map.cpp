@@ -51,6 +51,7 @@ void Map::loadMap(std::string path, int sizeX, int sizeY)
                 auto& tcol(manager.addEntity());
                 tcol.addComponent<ColliderComponent>("terrain", x * m_scaledSize, y * m_scaledSize, m_scaledSize);
 				tcol.addGroup(Game::groupColliders);
+                mapFile.ignore();
             }
             mapFile.ignore();
         }
