@@ -2,8 +2,7 @@
 #include "game.hpp"
 #include <fstream>
 #include "ECS/ECS.hpp"
-#include "ECS/TileComponent.hpp"
-#include "ECS/ColliderComponent.hpp"
+#include "ECS/components.hpp"
 
 extern Manager manager;
 
