@@ -13,6 +13,8 @@ SDL_Event Game::event;
 
 SDL_Rect Game::camera = {0,0,800,640};
 
+int playerScale = 2;
+
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
@@ -51,7 +53,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     map->loadMap("assets/maps/map.map", 25, 20);
 
-    player.addComponent<StateComponent>(2);
+    player.addComponent<StateComponent>(800, 640, 32, 32, playerScale);
     player.addComponent<SpriteComponent>("assets/Male/Male 01-1.png", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
@@ -94,8 +96,8 @@ void Game::update()
         }
     }
 
-    camera.x = player.getComponent<StateComponent>().position.x - 384;
-    camera.y = player.getComponent<StateComponent>().position.y - 304;
+    camera.x = player.getComponent<StateComponent>().position.x - 400;
+    camera.y = player.getComponent<StateComponent>().position.y - 320;
 
     if (camera.x < 0)
     {
@@ -105,13 +107,13 @@ void Game::update()
     {
         camera.y = 0;
     }
-    if (camera.x > camera.w)
+    if (camera.x > camera.w * playerScale)
     {
-        camera.x = camera.w;
+        camera.x = camera.w * playerScale;
     }
-    if (camera.y > camera.h)
+    if (camera.y > camera.h * playerScale)
     {
-        camera.y = camera.h;
+        camera.y = camera.h * playerScale;
     }
 }
 
