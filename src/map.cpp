@@ -3,11 +3,15 @@
 #include <fstream>
 #include "ECS/ECS.hpp"
 #include "ECS/TileComponent.hpp"
+#include "ECS/components.hpp"
 
 extern Manager manager;
 
 Map::Map(const char* p_mapFilePath, int p_mapScale, int p_tileSize)
 {
+    m_mapFilePath = p_mapFilePath;
+    m_mapScale = p_mapScale;
+    m_tileSize = p_tileSize;
     m_scaledSize = p_mapScale * p_tileSize;
 }
 
@@ -43,14 +47,16 @@ void Map::loadMap(std::string path, int sizeX, int sizeY)
         for (int x = 0; x < sizeX; x++)
         {
             mapFile.get(c);
+            //std::cout << "(" << x << "," << y << ")" << "Collider file value is: " << c << std::endl;
             if (c == '1')
             {
                 auto& tcol(manager.addEntity());
-                tcol.addComponent<ColliderComponent>(("terrain"), x * m_scaledSize, y * m_scaledSize, m_scaledSize);
-                mapFile.ignore();
+                tcol.addComponent<ColliderComponent>("terrain", x * m_scaledSize, y * m_scaledSize, m_scaledSize);
+				tcol.addGroup(Game::groupColliders);
             }
             mapFile.ignore();
         }
+        mapFile.ignore();
     }
 
     mapFile.close();

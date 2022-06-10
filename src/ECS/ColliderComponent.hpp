@@ -37,11 +37,9 @@ public:
         }
         state = &entity->getComponent<StateComponent>();
 
-        tex = TextureManager::LoadTexture("assets/coltex.png");
+        tex = TextureManager::LoadTexture("assets/maps/coltex.png");
         srcR = { 0, 0, 32, 32 };
         destR = { collider.x, collider.y, collider.w, collider.h};
-        
-        //Game::colliders.push_back(this);
     }
 
     void update() override
